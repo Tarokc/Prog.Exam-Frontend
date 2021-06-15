@@ -6,6 +6,21 @@ export const Navbar = () => {
 	const auth = useAuth();
 	const user = auth.user;
 
+	const register = !user ? (
+		<>
+		</>
+	) : (
+		<>
+			{user.roles.includes("admin") && (
+
+				<NavLink to="/register" className="navbar-item">
+					Register new boat
+				</NavLink>
+
+			)}
+		</>
+	)
+
 	const loginArea = !user ? (
 		<li className="nav-item d-flex align-items-center">
 			<NavLink role="button" to="/sign-in" activeClassName="" className="nav btn btn-primary">
@@ -44,9 +59,13 @@ export const Navbar = () => {
 		<nav className="navbar">
 			<div className="container">
 				<NavLink to="/" className="navbar-brand">
-					Start Code
+					Harbour System
 				</NavLink>
-				<span className="navbar-text text-monospace">v2.0</span>
+				<NavLink to="/search" className="navbar-item">
+					Search
+				</NavLink>
+
+				{register}
 
 				<ul className="ml-auto navbar-nav">{loginArea}</ul>
 			</div>

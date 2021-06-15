@@ -1,7 +1,9 @@
 import { AdminDashboard } from "../pages/admin/AdminDashboard";
 import { SignIn, SignUp } from "../pages/Authentication";
+import { Search } from "../pages/search/Search";
 import { Settings } from "../pages/user/Settings";
 import { Welcome } from "../pages/Welcome";
+import { Register } from "../pages/Register";
 
 export const routes = [
 	/**
@@ -43,4 +45,16 @@ export const routes = [
 		admin: true,
 		component: AdminDashboard,
 	},
+
+	{
+		path: "/search",
+		protected: true,
+		component: Search,
+	},
+	{
+		path: "/register",
+		protected: true,
+		admin: true,
+		component: Register,
+	}
 ];

@@ -5,6 +5,7 @@ import { Navbar } from "./components/ui/Navbar";
 import { NotFound } from "./pages/errors/NotFound";
 import { useAuth } from "./providers/ProvideAuth";
 import { routes } from "./routes/routes";
+import { Search } from "./pages/search/Search"
 
 const App = () => {
 	const auth = useAuth();

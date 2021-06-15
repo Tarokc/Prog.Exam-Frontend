@@ -106,6 +106,12 @@ export const SignUp = () => {
 						<input className="form-control" type="text" required name="username" id="username" />
 					</div>
 					<div className="form-group">
+						<label htmlFor="phone" className="required">
+							Phone
+						</label>
+						<input className="form-control" type="text" required name="phone" id="phone" />
+					</div>
+					<div className="form-group">
 						<div className="form-row row-eq-spacing-sm">
 							<div className="col-sm">
 								<label htmlFor="password" className="required">

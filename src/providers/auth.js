@@ -66,6 +66,12 @@ export const Authentication = () => {
 		setUser(await getUser());
 	};
 
+	const registerBoat = async (props) => {
+		console.log(props)
+		await API_MAIN.put("boat", { ...props });
+
+	}
+
 	useEffect(() => {
 		const doAsynchronousCalls = async () => {
 			setLoading(true);
