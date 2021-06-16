@@ -27,7 +27,6 @@ export const Navbar = () => {
 		)
 	)
 
-
 	const loginArea = !user ? (
 		<li className="nav-item d-flex align-items-center">
 			<NavLink role="button" to="/sign-in" activeClassName="" className="nav btn btn-primary">
@@ -82,7 +81,6 @@ export const Navbar = () => {
 						{connectBoat}
 					</li>
 				</ul>
-
 				<ul className="ml-auto navbar-nav">{loginArea}</ul>
 			</div>
 		</nav>

@@ -19,7 +19,6 @@ export const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             await API_MAIN.post("boat", data);
             console.log(data)
@@ -29,7 +28,6 @@ export const Register = () => {
             const error = _error.respons.data;
             toast.error(error.message || "Unknown error occured. Try again later.");
         }
-
     }
 
     return (
@@ -46,7 +44,7 @@ export const Register = () => {
                         <input id="boatmake" name="boatmake" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="boatmodel" className="required">Boat Brand</label>
+                        <label htmlFor="boatmodel" className="required">Boat Model</label>
                         <input id="boatmodel" name="boatmodel" className="form-control" />
                     </div>
                     <div className="form-group d-flex justify-content-end">

@@ -7,8 +7,6 @@ import Select from "../../components/ui/DarkmodeSelect"
 import React, { Component } from 'react';
 
 export const Search = () => {
-    const auth = useAuth;
-
 
     const [allOwners, setAllOwners] = useState({})
     const [allBoatsInHarbour, setAllBoatsInHarbour] = useState({})
@@ -49,7 +47,6 @@ export const Search = () => {
         setAllBoatsInHarbour(_boatsInHarbour);
         setAllOwners([])
         setBoatOwners([])
-
     };
 
     const handleChangeBoat = (e) => {
@@ -66,7 +63,6 @@ export const Search = () => {
             setAllBoatsInHarbour([])
         }
     };
-
 
     return (
         <div className="container">
@@ -86,9 +82,7 @@ export const Search = () => {
                                     className="react-select"
                                     onChange={(elem) => { setSearchHarbour(elem) }}
                                     options={harbourNames}
-
                                 />
-
                             </div>
 
                         </form>
@@ -104,7 +98,13 @@ export const Search = () => {
                         </form>
                     </div>
                 </div>
-                {allOwners.length > 0 ? <OwnerTable data={allOwners} /> : allBoatsInHarbour.length > 0 ? <BoatTable data={allBoatsInHarbour} /> : allBoatOwners.length > 0 ? <OwnerTable data={allBoatOwners} /> : <span>No boats found</span>}
+                {allOwners.length > 0 ?
+                    <OwnerTable data={allOwners} /> :
+                    allBoatsInHarbour.length > 0 ?
+                        <BoatTable data={allBoatsInHarbour} /> :
+                        allBoatOwners.length > 0 ?
+                            <OwnerTable data={allBoatOwners} /> :
+                            <span>No boats found</span>}
             </div>
         </div >
     )

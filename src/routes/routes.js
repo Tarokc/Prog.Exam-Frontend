@@ -64,5 +64,4 @@ export const routes = [
 		admin: true,
 		component: ConnectBoat,
 	}
-
 ];
