@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../providers/ProvideAuth";
 import { API_MAIN } from "../../utils/api";
 import { OwnerTable } from "../../components/OwnerTable"
 import { BoatTable } from "../../components/BoatTable"
+import Select from "../../components/ui/DarkmodeSelect"
+import React, { Component } from 'react';
 
 export const Search = () => {
+    const auth = useAuth;
+
+
     const [allOwners, setAllOwners] = useState({})
     const [allBoatsInHarbour, setAllBoatsInHarbour] = useState({})
     const [allBoatOwners, setBoatOwners] = useState({})
+    const [harbourNames, setHarbourNames] = useState({})
+
+    useEffect(() => {
+        const doAsynchronousCall = async () => {
+            const response = await API_MAIN.get("harbour/names");
+            let array = [];
+            response.data.map(name => array.push({ ["value"]: name, ["label"]: name }))
+            setHarbourNames(array)
+        };
+        doAsynchronousCall()
+    }, []);
 
     const handleSeeAllOwners = async (e) => {
         e.preventDefault();
@@ -28,12 +44,12 @@ export const Search = () => {
 
     const handleSubmitHarbour = async (e) => {
         e.preventDefault();
-        if (!searchHarbour.length == 0) {
-            const _boatsInHarbour = (await API_MAIN.get(`harbour/` + searchHarbour)).data;
-            setAllBoatsInHarbour(_boatsInHarbour);
-            setAllOwners([])
-            setBoatOwners([])
-        }
+
+        const _boatsInHarbour = (await API_MAIN.get(`harbour/` + searchHarbour.value)).data;
+        setAllBoatsInHarbour(_boatsInHarbour);
+        setAllOwners([])
+        setBoatOwners([])
+
     };
 
     const handleChangeBoat = (e) => {
@@ -51,6 +67,7 @@ export const Search = () => {
         }
     };
 
+
     return (
         <div className="container">
             <div className="content">
@@ -64,9 +81,16 @@ export const Search = () => {
                             <div className="form-group">
 
                                 <label htmlFor="harbour">Harbour name</label>
-                                <input type="text"></input>
-                                <input type="submit" id="harbour" name="harbour"></input>
+                                <input className="ml-3" type="submit" id="harbour" name="harbour" value="See all boats"></input>
+                                <Select
+                                    className="react-select"
+                                    onChange={(elem) => { setSearchHarbour(elem) }}
+                                    options={harbourNames}
+
+                                />
+
                             </div>
+
                         </form>
                     </div>
                     <div className="col-sm">
@@ -75,13 +99,13 @@ export const Search = () => {
 
                                 <label htmlFor="harbour">Boat name</label>
                                 <input type="text"></input>
-                                <input type="submit" id="harbour" name="harbour"></input>
+                                <input type="submit" id="boat" name="boat"></input>
                             </div>
                         </form>
                     </div>
                 </div>
                 {allOwners.length > 0 ? <OwnerTable data={allOwners} /> : allBoatsInHarbour.length > 0 ? <BoatTable data={allBoatsInHarbour} /> : allBoatOwners.length > 0 ? <OwnerTable data={allBoatOwners} /> : <span>No boats found</span>}
             </div>
-        </div>
+        </div >
     )
 }

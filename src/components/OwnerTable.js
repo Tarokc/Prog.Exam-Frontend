@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 export const OwnerTable = (owners) => {
     return (
         <table className="table">

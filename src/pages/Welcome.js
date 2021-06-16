@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 export const Welcome = () => {
 	return (
 		<div className="container">

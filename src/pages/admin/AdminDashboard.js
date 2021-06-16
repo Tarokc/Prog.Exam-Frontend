@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect, useState } from "react";
 import { API_MAIN } from "../../utils/api";
+import React, { Component } from 'react';
 
 dayjs.extend(relativeTime);
 

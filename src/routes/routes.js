@@ -3,7 +3,8 @@ import { SignIn, SignUp } from "../pages/Authentication";
 import { Search } from "../pages/search/Search";
 import { Settings } from "../pages/user/Settings";
 import { Welcome } from "../pages/Welcome";
-import { Register } from "../pages/Register";
+import { Register } from "../pages/admin/Register";
+import { ConnectBoat } from "../pages/admin/ConnectBoat";
 
 export const routes = [
 	/**
@@ -56,5 +57,12 @@ export const routes = [
 		protected: true,
 		admin: true,
 		component: Register,
+	},
+	{
+		path: "/connect",
+		protected: true,
+		admin: true,
+		component: ConnectBoat,
 	}
+
 ];

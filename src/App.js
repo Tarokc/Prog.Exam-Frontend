@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
 import { ToastContainer } from "react-toastify";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Navbar } from "./components/ui/Navbar";

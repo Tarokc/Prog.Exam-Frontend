@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 export const NotFound = ({ message }) => {
 	return (
 		<div className="container">

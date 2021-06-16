@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../providers/ProvideAuth";
+import React, { Component } from 'react';
 
 export const SignIn = () => {
 	const auth = useAuth();
@@ -23,8 +24,8 @@ export const SignIn = () => {
 				toast("Successfully signed in.");
 				history.push("/");
 			} catch (_error) {
-				const error = _error.response?.data;
-				toast.error(error?.message || "Unknown error occured. Try again later.");
+				const error = _error.response.data;
+				toast.error(error.message || "Unknown error occured. Try again later.");
 			}
 		}
 	};
@@ -80,8 +81,8 @@ export const SignUp = () => {
 				toast("Account successfully registered.");
 				history.push("/");
 			} catch (_error) {
-				const error = _error.response?.data;
-				toast.error(error?.message || "Unknown error occured. Try again later.");
+				const error = _error.response.data;
+				toast.error(error.message || "Unknown error occured. Try again later.");
 			}
 		}
 	};

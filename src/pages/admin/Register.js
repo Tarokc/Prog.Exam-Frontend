@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useAuth } from "../providers/ProvideAuth";
+import { useAuth } from "../../providers/ProvideAuth";
 import { toast } from "react-toastify";
-import { API_MAIN } from "../utils/api";
-
+import { API_MAIN } from "../../utils/api";
+import React, { Component } from 'react';
 
 export const Register = () => {
     const auth = useAuth();
@@ -26,8 +26,8 @@ export const Register = () => {
             toast("Boat has been created");
         }
         catch (_error) {
-            const error = _error.response?.data;
-            toast.error(error?.message || "Unknown error occured. Try again later.");
+            const error = _error.respons.data;
+            toast.error(error.message || "Unknown error occured. Try again later.");
         }
 
     }
@@ -41,13 +41,13 @@ export const Register = () => {
                         <label htmlFor="boatName" className="required">Boat Name</label>
                         <input id="boatname" name="boatname" className="form-control" />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label htmlFor="boatmake" className="required">Boat Make</label>
                         <input id="boatmake" name="boatmake" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="boatBrand" className="required">Boat Brand</label>
-                        <input id="boatbrand" name="boatbrand" className="form-control" />
+                        <label htmlFor="boatmodel" className="required">Boat Brand</label>
+                        <input id="boatmodel" name="boatmodel" className="form-control" />
                     </div>
                     <div className="form-group d-flex justify-content-end">
                         <input className="btn btn-primary" type="submit" value="Register boat" />

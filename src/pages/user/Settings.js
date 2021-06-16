@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../../providers/ProvideAuth";
 import { toast } from "react-toastify";
+import React, { Component } from 'react';
+
 export const Settings = () => {
 	const auth = useAuth();
 
@@ -20,8 +22,8 @@ export const Settings = () => {
 			await auth.update(data);
 			toast("Your account was updated.");
 		} catch (_error) {
-			const error = _error.response?.data;
-			toast.error(error?.message || "Unknown error occured. Try again later.");
+			const error = _error.response.data;
+			toast.error(error.message || "Unknown error occured. Try again later.");
 		}
 	};
 
