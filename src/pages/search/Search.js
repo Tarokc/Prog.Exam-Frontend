@@ -57,7 +57,7 @@ export const Search = () => {
     const handleSubmitBoat = async (e) => {
         e.preventDefault();
         if (!searchBoat.length == 0) {
-            const _boatOwners = (await API_MAIN.get(`boat/` + searchBoat)).data;
+            const _boatOwners = (await API_MAIN.get(`boat/name/` + searchBoat)).data;
             setBoatOwners(_boatOwners);
             setAllOwners([])
             setAllBoatsInHarbour([])

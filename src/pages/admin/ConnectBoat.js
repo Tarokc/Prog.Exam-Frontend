@@ -9,7 +9,6 @@ export const ConnectBoat = () => {
 
     const [harbourNames, setHarbourNames] = useState({})
     const [boatNames, setBoatNames] = useState({})
-    const [data, setData] = useState({});
     const [boat, setBoat] = useState({})
     const [harbour, setHarbour] = useState({})
 
@@ -21,7 +20,7 @@ export const ConnectBoat = () => {
             setHarbourNames(array)
         };
         const getBoatNames = async () => {
-            const response = await API_MAIN.get("boat/ownerless");
+            const response = await API_MAIN.get("boat/harbourless");
             let array = []
             response.data.map(boat => array.push({ ["value"]: boat.name, ["label"]: boat.name }))
             setBoatNames(array)
@@ -35,7 +34,6 @@ export const ConnectBoat = () => {
         try {
             let data = []
             data.push({ ["boatname"]: boat.value, ["harbour"]: harbour.value })
-            console.log(data)
             await API_MAIN.put("harbour", data)
             toast("Boat has been connected");
         }
@@ -44,9 +42,6 @@ export const ConnectBoat = () => {
             toast.error(error.message || "Unknown error occured. Try again later.");
         }
     }
-
-    console.log(boat)
-    console.log(harbour)
 
     return (
         <div className="container" style={{ maxWidth: "50rem" }}>
